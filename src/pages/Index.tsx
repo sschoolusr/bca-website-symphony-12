@@ -4,6 +4,8 @@ import { About } from "../components/About";
 import { Events } from "../components/Events";
 import { Faculties } from "../components/Faculties";
 import { Syllabus } from "../components/Syllabus";
+import { Contact } from "../components/Contact";
+import { Gallery } from "../components/Gallery";
 
 const Index = () => {
   return (
@@ -14,6 +16,8 @@ const Index = () => {
       <Events />
       <Faculties />
       <Syllabus />
+      <Gallery />
+      <Contact />
     </div>
   );
 };
