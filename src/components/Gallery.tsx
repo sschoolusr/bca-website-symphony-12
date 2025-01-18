@@ -5,7 +5,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 
 type Category = 'all' | 'academic' | 'cultural' | 'sports' | 'infrastructure';
 
-const galleryItems = [
+export const galleryItems = [
   {
     id: 1,
     category: 'academic',
