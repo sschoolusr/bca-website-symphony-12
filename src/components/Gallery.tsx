@@ -2,6 +2,8 @@ import { useState, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
+import { Dialog, DialogContent } from './ui/dialog';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem } from './ui/carousel';
 
 // Lazy load images
@@ -41,25 +43,33 @@ export const galleryItems = [
 export const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState<'all' | 'academic' | 'cultural' | 'sports' | 'infrastructure'>('all');
   const [visibleItems, setVisibleItems] = useState(6);
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const filteredItems = activeCategory === 'all' 
     ? galleryItems 
     : galleryItems.filter(item => item.category === activeCategory);
 
-  const loadMoreItems = () => {
-    setVisibleItems(prev => prev + 6);
+  const handlePrevImage = () => {
+    setSelectedImage(prev => 
+      prev === null ? null : 
+      prev === 0 ? filteredItems.length - 1 : 
+      prev - 1
+    );
+  };
+
+  const handleNextImage = () => {
+    setSelectedImage(prev => 
+      prev === null ? null : 
+      prev === filteredItems.length - 1 ? 0 : 
+      prev + 1
+    );
   };
 
   return (
-    <section id="gallery" className="py-16 bg-[#6a5acd]/5 w-full">
-      <div className="container mx-auto px-4">
+    <section id="gallery" className="py-16 bg-[#6a5acd]/5">
+      <div className="container mx-auto">
         <h2 className="text-3xl font-bold text-center mb-8">Gallery</h2>
-        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-          A glimpse into the vibrant life of the BCA Department. From academic achievements to cultural 
-          celebrations, explore our journey through these moments captured in time.
-        </p>
-
-        {/* Category Filters */}
+        
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {['all', 'academic', 'cultural', 'sports', 'infrastructure'].map((category) => (
             <Button
@@ -73,14 +83,69 @@ export const Gallery = () => {
           ))}
         </div>
 
-        {/* Gallery Grid with Lazy Loading */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           <Suspense fallback={<div>Loading gallery...</div>}>
-            {filteredItems.slice(0, visibleItems).map((item) => (
-              <GalleryImage key={item.id} item={item} />
+            {filteredItems.slice(0, visibleItems).map((item, index) => (
+              <Card 
+                key={item.id}
+                className="cursor-pointer hover:shadow-lg transition-shadow"
+                onClick={() => setSelectedImage(index)}
+              >
+                <CardContent className="p-0">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-48 object-cover"
+                    loading="lazy"
+                  />
+                  <div className="p-4">
+                    <h4 className="font-semibold">{item.title}</h4>
+                    <p className="text-sm text-gray-600">{item.description}</p>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </Suspense>
         </div>
+
+        <Dialog 
+          open={selectedImage !== null} 
+          onOpenChange={() => setSelectedImage(null)}
+        >
+          <DialogContent className="max-w-4xl">
+            {selectedImage !== null && (
+              <div className="relative">
+                <img
+                  src={filteredItems[selectedImage].image}
+                  alt={filteredItems[selectedImage].title}
+                  className="w-full h-[60vh] object-cover"
+                />
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="absolute left-4 top-1/2 -translate-y-1/2"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handlePrevImage();
+                  }}
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="absolute right-4 top-1/2 -translate-y-1/2"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleNextImage();
+                  }}
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
 
         {/* View All Button */}
         <div className="text-center mb-12">

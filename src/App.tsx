@@ -23,7 +23,7 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <div className="min-h-screen flex flex-col bg-gray-50">
+      <div className="min-h-screen flex flex-col">
         <div className="container mx-auto">
           <div className="h-[40vh] relative">
             <img
@@ -39,7 +39,7 @@ const App = () => (
         <BrowserRouter>
           <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading...</div>}>
             <main className="flex-grow">
-              <div className="container mx-auto px-4 lg:px-8 xl:px-16 2xl:px-24 bg-white">
+              <div className="container mx-auto">
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/about" element={<About />} />
