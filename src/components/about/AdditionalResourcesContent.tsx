@@ -78,7 +78,7 @@ export const AdditionalResourcesContent: React.FC<{ selectedResource: string }> 
   const content = resourceContents[selectedResource] || resourceContents.history;
 
   return (
-    <Card className="bg-gray-50 border-t-4 border-tech-purple">
+    <Card className="bg-gray-50 border-t-4 border-orange-500 rounded-none border-x-0 border-b-0">
       <CardHeader>
         <CardTitle>{content.title}</CardTitle>
       </CardHeader>
