@@ -8,6 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Link } from "react-router-dom";
 
 const flagshipEvents = [
   {
@@ -81,9 +82,14 @@ export const Events = () => {
                     </CardHeader>
                     <CardContent>
                       <p className="text-tech-gray">{event.description}</p>
-                      <Button className="mt-4 w-full" variant="outline">
-                        Learn More
-                      </Button>
+                      <Link 
+                        to={`/events/${event.title.toLowerCase().replace(/ /g, '_').replace(/'/g, '')}`}
+                        className="mt-4 w-full inline-block"
+                      >
+                        <Button className="w-full" variant="outline">
+                          Learn More
+                        </Button>
+                      </Link>
                     </CardContent>
                   </Card>
                 </CarouselItem>
@@ -109,9 +115,14 @@ export const Events = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-tech-gray">{workshop.description}</p>
-                  <Button className="mt-4 w-full" variant="outline">
-                    Register Now
-                  </Button>
+                  <Link 
+                    to={`/events/${workshop.title.toLowerCase().replace(/ /g, '_')}`}
+                    className="mt-4 w-full inline-block"
+                  >
+                    <Button className="w-full" variant="outline">
+                      Learn More
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             ))}
