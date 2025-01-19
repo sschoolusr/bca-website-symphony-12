@@ -23,31 +23,36 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <div className="min-h-screen flex flex-col">
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <div className="w-full">
+      <div className="min-h-screen flex flex-col bg-gray-50">
+        <div className="container mx-auto">
+          <div className="h-[40vh] relative">
             <img
               src="https://images.unsplash.com/photo-1439337153520-7082a56a81f4"
               alt="Header"
-              className="w-full h-[40vh] object-cover"
+              className="w-full h-full object-cover"
             />
+            <div className="absolute inset-0 bg-black/50" />
           </div>
+        </div>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
           <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading...</div>}>
-            <main className="flex-grow container mx-auto px-4 lg:px-8 xl:px-16 2xl:px-24">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/events" element={<Events />} />
-                <Route path="/events/:eventId" element={<EventDetail />} />
-                <Route path="/events/flagship" element={<FlagshipEventsList />} />
-                <Route path="/events/workshops" element={<WorkshopsList />} />
-                <Route path="/faculties" element={<Faculties />} />
-                <Route path="/syllabus" element={<Syllabus />} />
-                <Route path="/gallery" element={<Gallery />} />
-                <Route path="/gallery/archive" element={<GalleryArchive />} />
-              </Routes>
+            <main className="flex-grow">
+              <div className="container mx-auto px-4 lg:px-8 xl:px-16 2xl:px-24 bg-white">
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/events" element={<Events />} />
+                  <Route path="/events/:eventId" element={<EventDetail />} />
+                  <Route path="/events/flagship" element={<FlagshipEventsList />} />
+                  <Route path="/events/workshops" element={<WorkshopsList />} />
+                  <Route path="/faculties" element={<Faculties />} />
+                  <Route path="/syllabus" element={<Syllabus />} />
+                  <Route path="/gallery" element={<Gallery />} />
+                  <Route path="/gallery/archive" element={<GalleryArchive />} />
+                </Routes>
+              </div>
             </main>
             <Footer />
           </Suspense>

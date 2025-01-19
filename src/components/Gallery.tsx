@@ -51,8 +51,8 @@ export const Gallery = () => {
   };
 
   return (
-    <section id="gallery" className="py-16 w-full">
-      <div className="container mx-auto">
+    <section id="gallery" className="py-16 bg-[#6a5acd]/5 w-full">
+      <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">Gallery</h2>
         <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
           A glimpse into the vibrant life of the BCA Department. From academic achievements to cultural 
@@ -66,7 +66,7 @@ export const Gallery = () => {
               key={category}
               variant={activeCategory === category ? 'default' : 'outline'}
               onClick={() => setActiveCategory(category as 'all' | 'academic' | 'cultural' | 'sports' | 'infrastructure')}
-              className="capitalize rounded-none"
+              className="capitalize"
             >
               {category}
             </Button>
@@ -77,7 +77,7 @@ export const Gallery = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           <Suspense fallback={<div>Loading gallery...</div>}>
             {filteredItems.slice(0, visibleItems).map((item) => (
-              <GalleryImage key={item.id} item={item} allItems={filteredItems} />
+              <GalleryImage key={item.id} item={item} />
             ))}
           </Suspense>
         </div>
@@ -85,7 +85,7 @@ export const Gallery = () => {
         {/* View All Button */}
         <div className="text-center mb-12">
           <Link to="/gallery/archive">
-            <Button variant="outline" size="lg" className="rounded-none">
+            <Button variant="outline" size="lg">
               View All / Archive
             </Button>
           </Link>
@@ -99,7 +99,7 @@ export const Gallery = () => {
               {galleryItems.map((item) => (
                 <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/3">
                   <div className="p-1">
-                    <Card className="rounded-none border-t-4 border-[#ff9800] bg-gray-100">
+                    <Card>
                       <CardContent className="p-0">
                         <img
                           src={item.image}
@@ -121,7 +121,7 @@ export const Gallery = () => {
 
         {/* Submit Photos CTA */}
         <div className="text-center">
-          <Button size="lg" className="rounded-none bg-[#6a5acd] hover:bg-[#6a5acd]/90">
+          <Button size="lg" className="bg-[#6a5acd] hover:bg-[#6a5acd]/90">
             Submit Your Photos
           </Button>
         </div>
