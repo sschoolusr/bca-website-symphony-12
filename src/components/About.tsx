@@ -113,7 +113,7 @@ export const About = () => {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Additional Resources Panel - Left Side */}
           <div className="order-1 lg:order-1">
-            <Card className="bg-gray-100 shadow-none border-t-4 border-orange-500 rounded-none border-x-0 border-b-0">
+            <Card className="bg-gray-100 shadow-none border-t-4 border-tech-purple">
               <CardHeader>
                 <CardTitle>Additional Resources</CardTitle>
               </CardHeader>
@@ -144,7 +144,7 @@ export const About = () => {
 
           {/* Contact Information - Right Side */}
           <div className="order-3 lg:order-3">
-            <Card className="bg-gray-100 shadow-none border-t-4 border-orange-500 rounded-none border-x-0 border-b-0">
+            <Card className="bg-gray-100 shadow-none border-t-4 border-tech-purple">
               <CardHeader>
                 <CardTitle>Contact Us</CardTitle>
               </CardHeader>
@@ -186,7 +186,7 @@ export const About = () => {
             {coreValues.map((value, index) => (
               <Card 
                 key={value.title}
-                className="animate-fade-up bg-gray-100 shadow-none border-t-4 border-orange-500 rounded-none border-x-0 border-b-0"
+                className="animate-fade-up bg-gray-100 shadow-none border-t-4 border-tech-purple"
                 style={{ animationDelay: `${0.2 * (index + 1)}s` }}
               >
                 <CardHeader>

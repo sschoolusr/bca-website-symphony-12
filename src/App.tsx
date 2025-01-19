@@ -24,16 +24,6 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <div className="min-h-screen flex flex-col bg-gray-50">
-        <div className="container mx-auto">
-          <div className="h-[40vh] relative">
-            <img
-              src="https://images.unsplash.com/photo-1439337153520-7082a56a81f4"
-              alt="Header"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/50" />
-          </div>
-        </div>
         <Toaster />
         <Sonner />
         <BrowserRouter>

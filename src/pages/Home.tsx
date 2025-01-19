@@ -1,4 +1,5 @@
 import { Navbar } from "../components/Navbar";
+import { Hero } from "../components/Hero";
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,7 +8,18 @@ import { ArrowRight } from "lucide-react";
 const Home = () => {
   return (
     <div className="min-h-screen bg-white">
+      {/* Full-width title image */}
+      <div className="w-full h-[40vh] relative">
+        <img
+          src="https://images.unsplash.com/photo-1439337153520-7082a56a81f4"
+          alt="Header"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
+
       <Navbar />
+      
       <main className="container mx-auto px-4 py-12">
         <section className="grid md:grid-cols-3 gap-8 mb-16">
           <div className="md:col-span-2">

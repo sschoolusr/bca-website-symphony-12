@@ -21,11 +21,6 @@ export default {
       },
     },
     extend: {
-      borderRadius: {
-        lg: "0",
-        md: "0",
-        sm: "0",
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
