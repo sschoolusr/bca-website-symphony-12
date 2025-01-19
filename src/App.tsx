@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { Footer } from "./components/Footer";
 
-// Lazy load pages for better performance
+// Lazy load pages
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const Events = lazy(() => import("./pages/Events"));
@@ -14,6 +14,7 @@ const EventDetail = lazy(() => import("./pages/EventDetail"));
 const Faculties = lazy(() => import("./pages/Faculties"));
 const Syllabus = lazy(() => import("./pages/Syllabus"));
 const Gallery = lazy(() => import("./pages/Gallery"));
+const GalleryArchive = lazy(() => import("./pages/GalleryArchive"));
 const FlagshipEventsList = lazy(() => import("./pages/FlagshipEventsList"));
 const WorkshopsList = lazy(() => import("./pages/WorkshopsList"));
 
@@ -39,6 +40,7 @@ const App = () => (
                   <Route path="/faculties" element={<Faculties />} />
                   <Route path="/syllabus" element={<Syllabus />} />
                   <Route path="/gallery" element={<Gallery />} />
+                  <Route path="/gallery/archive" element={<GalleryArchive />} />
                 </Routes>
               </div>
             </main>

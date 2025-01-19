@@ -1,50 +1,57 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel';
+import { Carousel, CarouselContent, CarouselItem } from './ui/carousel';
 
-type Category = 'all' | 'academic' | 'cultural' | 'sports' | 'infrastructure';
-
-export const galleryItems = [
-  {
-    id: 1,
-    category: 'academic',
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c',
-    title: 'Tech Workshop 2024',
-    description: 'Students participating in the annual tech workshop'
-  },
-  {
-    id: 2,
-    category: 'cultural',
-    image: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81',
-    title: 'Annual Day Celebration',
-    description: 'Cultural performances by students'
-  },
-  {
-    id: 3,
-    category: 'infrastructure',
-    image: 'https://images.unsplash.com/photo-1483058712412-4245e9b90334',
-    title: 'Computer Lab',
-    description: 'State-of-the-art computer laboratory'
-  },
-  {
-    id: 4,
-    category: 'sports',
-    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6',
-    title: 'Sports Day 2024',
-    description: 'Annual sports competition'
-  },
-];
+// Lazy load images
+const GalleryImage = lazy(() => import('./GalleryImage'));
 
 export const Gallery = () => {
-  const [activeCategory, setActiveCategory] = useState<Category>('all');
+  const [activeCategory, setActiveCategory] = useState<'all' | 'academic' | 'cultural' | 'sports' | 'infrastructure'>('all');
+  const [visibleItems, setVisibleItems] = useState(6);
+
+  const galleryItems = [
+    {
+      id: 1,
+      category: 'academic',
+      image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c',
+      title: 'Tech Workshop 2024',
+      description: 'Students participating in the annual tech workshop'
+    },
+    {
+      id: 2,
+      category: 'cultural',
+      image: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81',
+      title: 'Annual Day Celebration',
+      description: 'Cultural performances by students'
+    },
+    {
+      id: 3,
+      category: 'infrastructure',
+      image: 'https://images.unsplash.com/photo-1483058712412-4245e9b90334',
+      title: 'Computer Lab',
+      description: 'State-of-the-art computer laboratory'
+    },
+    {
+      id: 4,
+      category: 'sports',
+      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6',
+      title: 'Sports Day 2024',
+      description: 'Annual sports competition'
+    },
+  ];
 
   const filteredItems = activeCategory === 'all' 
     ? galleryItems 
     : galleryItems.filter(item => item.category === activeCategory);
 
+  const loadMoreItems = () => {
+    setVisibleItems(prev => prev + 6);
+  };
+
   return (
-    <section id="gallery" className="py-16 bg-[#6a5acd]/5">
+    <section id="gallery" className="py-16 bg-[#6a5acd]/5 w-full">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">Gallery</h2>
         <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
@@ -58,7 +65,7 @@ export const Gallery = () => {
             <Button
               key={category}
               variant={activeCategory === category ? 'default' : 'outline'}
-              onClick={() => setActiveCategory(category as Category)}
+              onClick={() => setActiveCategory(category as 'all' | 'academic' | 'cultural' | 'sports' | 'infrastructure')}
               className="capitalize"
             >
               {category}
@@ -66,27 +73,22 @@ export const Gallery = () => {
           ))}
         </div>
 
-        {/* Gallery Grid */}
+        {/* Gallery Grid with Lazy Loading */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {filteredItems.map((item) => (
-            <Card key={item.id} className="overflow-hidden group hover:shadow-lg transition-shadow">
-              <CardContent className="p-0">
-                <div className="relative">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="p-6 text-white h-full flex flex-col justify-end">
-                      <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                      <p className="text-sm">{item.description}</p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          <Suspense fallback={<div>Loading gallery...</div>}>
+            {filteredItems.slice(0, visibleItems).map((item) => (
+              <GalleryImage key={item.id} item={item} />
+            ))}
+          </Suspense>
+        </div>
+
+        {/* View All Button */}
+        <div className="text-center mb-12">
+          <Link to="/gallery/archive">
+            <Button variant="outline" size="lg">
+              View All / Archive
+            </Button>
+          </Link>
         </div>
 
         {/* Featured Album Carousel */}
@@ -114,8 +116,6 @@ export const Gallery = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
           </Carousel>
         </div>
 
