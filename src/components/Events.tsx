@@ -2,8 +2,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { FlagshipEvent } from "./events/FlagshipEvent";
 import { WorkshopCard } from "./events/WorkshopCard";
@@ -48,8 +46,6 @@ export const Events = () => {
                 ))}
               </AnimatePresence>
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
           </Carousel>
         </div>
 
@@ -77,8 +73,6 @@ export const Events = () => {
                 ))}
               </AnimatePresence>
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
           </Carousel>
         </div>
 

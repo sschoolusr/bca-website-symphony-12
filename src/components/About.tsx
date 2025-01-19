@@ -92,15 +92,13 @@ export const About = () => {
   const resources = [
     { id: 'history', label: 'History' },
     { id: 'lifeAboutTown', label: 'Life About Town' },
-    { id: 'directions', label: 'Directions' },
     { id: 'facilities', label: 'Computing Facilities' },
     { id: 'faq', label: 'Department FAQ' }
   ];
 
   return (
-    <section id="about" className="py-20 bg-white font-mallory">
+    <section id="about" className="py-20 bg-gray-50 font-mallory">
       <div className="container mx-auto px-4 lg:px-8">
-        {/* Introduction */}
         <div className="text-center mb-16 animate-fade-up">
           <h2 className="text-3xl sm:text-4xl font-bold text-tech-dark mb-4">
             Welcome to BCA Department
@@ -114,8 +112,8 @@ export const About = () => {
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Additional Resources Panel - Left Side */}
-          <div className="order-1">
-            <Card>
+          <div className="order-1 lg:order-1">
+            <Card className="bg-gray-100 shadow-none border-t-4 border-tech-purple">
               <CardHeader>
                 <CardTitle>Additional Resources</CardTitle>
               </CardHeader>
@@ -125,10 +123,10 @@ export const About = () => {
                     <button
                       key={resource.id}
                       onClick={() => setSelectedResource(resource.id)}
-                      className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
+                      className={`w-full text-left px-4 py-2 rounded-none transition-colors ${
                         selectedResource === resource.id
                           ? 'bg-tech-purple text-white'
-                          : 'text-tech-gray hover:bg-gray-100'
+                          : 'text-tech-gray hover:bg-gray-200'
                       }`}
                     >
                       {resource.label}
@@ -140,13 +138,13 @@ export const About = () => {
           </div>
 
           {/* Main Content - Middle */}
-          <div className="lg:col-span-1 order-2">
+          <div className="lg:col-span-1 order-2 lg:order-2">
             <AdditionalResourcesContent selectedResource={selectedResource} />
           </div>
 
           {/* Contact Information - Right Side */}
           <div className="order-3 lg:order-3">
-            <Card>
+            <Card className="bg-gray-100 shadow-none border-t-4 border-tech-purple">
               <CardHeader>
                 <CardTitle>Contact Us</CardTitle>
               </CardHeader>
@@ -188,7 +186,7 @@ export const About = () => {
             {coreValues.map((value, index) => (
               <Card 
                 key={value.title}
-                className="animate-fade-up hover:shadow-lg transition-shadow"
+                className="animate-fade-up bg-gray-100 shadow-none border-t-4 border-tech-purple"
                 style={{ animationDelay: `${0.2 * (index + 1)}s` }}
               >
                 <CardHeader>

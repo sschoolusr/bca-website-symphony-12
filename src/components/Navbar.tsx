@@ -8,51 +8,34 @@ const navItems = [
   { name: 'About', path: '/about' },
   { name: 'Faculties', path: '/faculties' },
   { name: 'Syllabus', path: '/syllabus' },
-  { name: 'Contact', path: '/contact' },
   { name: 'Gallery', path: '/gallery' },
 ];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const isActive = (path: string) => {
     return location.pathname === path;
   };
 
   return (
-    <nav 
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 backdrop-blur-sm shadow-sm' : 'bg-transparent'
-      }`}
-      role="navigation"
-      aria-label="Main navigation"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="w-full bg-tech-dark text-white px-4 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="text-2xl font-bold text-tech-dark hover:text-tech-purple transition-colors">
+            <Link to="/" className="text-2xl font-bold text-white hover:text-tech-purple transition-colors">
               BCA
             </Link>
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`text-tech-gray hover:text-tech-purple transition-colors relative group ${
+                className={`text-white font-bold hover:text-tech-purple transition-colors relative group ${
                   isActive(item.path) ? 'text-tech-purple' : ''
                 }`}
               >
@@ -70,7 +53,7 @@ export const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-tech-dark hover:text-tech-purple transition-colors"
+              className="text-white hover:text-tech-purple transition-colors"
               aria-expanded={isOpen}
               aria-label="Toggle navigation menu"
             >
@@ -81,13 +64,13 @@ export const Navbar = () => {
 
         {/* Mobile Navigation Menu */}
         {isOpen && (
-          <div className="md:hidden absolute top-16 left-0 w-full bg-white shadow-lg animate-fade-down">
+          <div className="md:hidden absolute top-16 left-0 w-full bg-tech-dark shadow-lg animate-fade-down">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`block px-3 py-2 text-tech-gray hover:text-tech-purple transition-colors ${
+                  className={`block px-3 py-2 text-white font-bold hover:text-tech-purple transition-colors ${
                     isActive(item.path) ? 'text-tech-purple' : ''
                   }`}
                   onClick={() => setIsOpen(false)}
