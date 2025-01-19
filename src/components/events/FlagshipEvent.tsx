@@ -9,7 +9,7 @@ interface FlagshipEventProps {
   date: string;
 }
 
-const FlagshipEvent = ({ title, description, icon, date }: FlagshipEventProps) => {
+export const FlagshipEvent = ({ title, description, icon, date }: FlagshipEventProps) => {
   return (
     <Card className="h-full">
       <CardHeader>

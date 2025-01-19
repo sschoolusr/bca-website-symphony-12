@@ -9,7 +9,7 @@ interface WorkshopCardProps {
   date: string;
 }
 
-const WorkshopCard = ({ title, description, icon, date }: WorkshopCardProps) => {
+export const WorkshopCard = ({ title, description, icon, date }: WorkshopCardProps) => {
   return (
     <Card className="animate-fade-up">
       <CardHeader>
