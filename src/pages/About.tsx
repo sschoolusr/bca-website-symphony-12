@@ -1,7 +1,8 @@
 import { Navbar } from "../components/Navbar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Mail, Clock, Phone, MapPin } from "lucide-react";
+import { Mail, Clock, Phone, MapPin, Bus, Train, Car } from "lucide-react";
+import MapComponent from "../components/MapComponent";
 
 const About = () => {
   return (
@@ -39,37 +40,49 @@ const About = () => {
               </p>
             </section>
 
-            <section className="space-y-4 mt-8">
-              <h2 className="text-2xl font-semibold text-tech-dark">Leadership and Contacts</h2>
-              <Card>
-                <CardContent className="grid md:grid-cols-2 gap-4 p-6">
-                  <div className="space-y-4">
+            {/* Map and Directions Section */}
+            <section className="mt-8 space-y-6">
+              <h2 className="text-2xl font-semibold text-tech-dark">Map and Directions</h2>
+              <MapComponent />
+              
+              <div className="space-y-6 mt-6">
+                <h3 className="text-xl font-semibold">How to Reach Us</h3>
+                
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <Train className="w-5 h-5 mt-1 text-tech-purple" />
                     <div>
-                      <h3 className="font-semibold">Dr. Sarah Johnson</h3>
-                      <p className="text-tech-gray">Department Chair</p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold">Dr. Michael Chen</h3>
-                      <p className="text-tech-gray">Director of Graduate Studies</p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold">Prof. Emily Williams</h3>
-                      <p className="text-tech-gray">Undergraduate Program Coordinator</p>
+                      <h4 className="font-semibold">By Train</h4>
+                      <p className="text-tech-gray">
+                        From Patna Junction, take an auto-rickshaw or taxi to Rajendra Nagar Terminal. 
+                        The college is located 5 minutes from the terminal.
+                      </p>
                     </div>
                   </div>
-                  <div className="space-y-4">
-                    <a href="mailto:sarah.johnson@university.edu" className="text-tech-purple hover:underline block">
-                      sarah.johnson@university.edu
-                    </a>
-                    <a href="mailto:michael.chen@university.edu" className="text-tech-purple hover:underline block">
-                      michael.chen@university.edu
-                    </a>
-                    <a href="mailto:emily.williams@university.edu" className="text-tech-purple hover:underline block">
-                      emily.williams@university.edu
-                    </a>
+
+                  <div className="flex items-start gap-3">
+                    <Bus className="w-5 h-5 mt-1 text-tech-purple" />
+                    <div>
+                      <h4 className="font-semibold">By Bus</h4>
+                      <p className="text-tech-gray">
+                        Take any city bus to Rajendra Nagar Terminal. Multiple bus routes connect 
+                        to our location from different parts of the city.
+                      </p>
+                    </div>
                   </div>
-                </CardContent>
-              </Card>
+
+                  <div className="flex items-start gap-3">
+                    <Car className="w-5 h-5 mt-1 text-tech-purple" />
+                    <div>
+                      <h4 className="font-semibold">By Car</h4>
+                      <p className="text-tech-gray">
+                        Follow Bailey Road towards Rajendra Nagar Terminal. The college is 
+                        visible on the right side with ample parking space available.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </section>
           </div>
 
