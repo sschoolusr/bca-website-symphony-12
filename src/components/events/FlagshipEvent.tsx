@@ -1,7 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { LucideIcon } from "lucide-react";
 
 interface FlagshipEventProps {
   title: string;
@@ -10,7 +9,7 @@ interface FlagshipEventProps {
   date: string;
 }
 
-export const FlagshipEvent = ({ title, description, icon, date }: FlagshipEventProps) => {
+const FlagshipEvent = ({ title, description, icon, date }: FlagshipEventProps) => {
   return (
     <Card className="h-full">
       <CardHeader>
@@ -34,3 +33,5 @@ export const FlagshipEvent = ({ title, description, icon, date }: FlagshipEventP
     </Card>
   );
 };
+
+export default FlagshipEvent;

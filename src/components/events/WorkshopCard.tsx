@@ -7,12 +7,11 @@ interface WorkshopCardProps {
   description: string;
   icon: React.ReactNode;
   date: string;
-  style?: React.CSSProperties; // Added style prop
 }
 
-export const WorkshopCard = ({ title, description, icon, date, style }: WorkshopCardProps) => {
+const WorkshopCard = ({ title, description, icon, date }: WorkshopCardProps) => {
   return (
-    <Card className="animate-fade-up" style={style}>
+    <Card className="animate-fade-up">
       <CardHeader>
         <div className="flex items-center gap-2">
           {icon}
@@ -34,3 +33,5 @@ export const WorkshopCard = ({ title, description, icon, date, style }: Workshop
     </Card>
   );
 };
+
+export default WorkshopCard;

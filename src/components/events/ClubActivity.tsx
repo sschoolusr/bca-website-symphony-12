@@ -1,12 +1,10 @@
-import { LucideIcon } from "lucide-react";
-
 interface ClubActivityProps {
   icon: React.ReactNode;
   title: string;
   description: string;
 }
 
-export const ClubActivity = ({ icon, title, description }: ClubActivityProps) => {
+const ClubActivity = ({ icon, title, description }: ClubActivityProps) => {
   return (
     <div className="p-4">
       <div className="h-8 w-8 mx-auto mb-4 text-tech-purple">
@@ -17,3 +15,5 @@ export const ClubActivity = ({ icon, title, description }: ClubActivityProps) =>
     </div>
   );
 };
+
+export default ClubActivity;

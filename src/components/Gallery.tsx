@@ -7,40 +7,40 @@ import { Carousel, CarouselContent, CarouselItem } from './ui/carousel';
 // Lazy load images
 const GalleryImage = lazy(() => import('./GalleryImage'));
 
+export const galleryItems = [
+  {
+    id: 1,
+    category: 'academic',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c',
+    title: 'Tech Workshop 2024',
+    description: 'Students participating in the annual tech workshop'
+  },
+  {
+    id: 2,
+    category: 'cultural',
+    image: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81',
+    title: 'Annual Day Celebration',
+    description: 'Cultural performances by students'
+  },
+  {
+    id: 3,
+    category: 'infrastructure',
+    image: 'https://images.unsplash.com/photo-1483058712412-4245e9b90334',
+    title: 'Computer Lab',
+    description: 'State-of-the-art computer laboratory'
+  },
+  {
+    id: 4,
+    category: 'sports',
+    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6',
+    title: 'Sports Day 2024',
+    description: 'Annual sports competition'
+  },
+];
+
 export const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState<'all' | 'academic' | 'cultural' | 'sports' | 'infrastructure'>('all');
   const [visibleItems, setVisibleItems] = useState(6);
-
-  const galleryItems = [
-    {
-      id: 1,
-      category: 'academic',
-      image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c',
-      title: 'Tech Workshop 2024',
-      description: 'Students participating in the annual tech workshop'
-    },
-    {
-      id: 2,
-      category: 'cultural',
-      image: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81',
-      title: 'Annual Day Celebration',
-      description: 'Cultural performances by students'
-    },
-    {
-      id: 3,
-      category: 'infrastructure',
-      image: 'https://images.unsplash.com/photo-1483058712412-4245e9b90334',
-      title: 'Computer Lab',
-      description: 'State-of-the-art computer laboratory'
-    },
-    {
-      id: 4,
-      category: 'sports',
-      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6',
-      title: 'Sports Day 2024',
-      description: 'Annual sports competition'
-    },
-  ];
 
   const filteredItems = activeCategory === 'all' 
     ? galleryItems 
