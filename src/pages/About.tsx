@@ -9,8 +9,24 @@ const About = () => {
       <Navbar />
       <main className="container mx-auto px-4 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Additional Resources Panel - Left Side */}
+          <div className="col-span-1">
+            <Card>
+              <CardContent className="p-6">
+                <h2 className="text-xl font-semibold mb-4">Additional Resources</h2>
+                <nav className="space-y-3">
+                  <a href="#history" className="text-tech-purple hover:underline block">History</a>
+                  <a href="#life" className="text-tech-purple hover:underline block">Life About Town</a>
+                  <a href="#directions" className="text-tech-purple hover:underline block">Directions</a>
+                  <a href="#facilities" className="text-tech-purple hover:underline block">Computing Facilities</a>
+                  <a href="#faq" className="text-tech-purple hover:underline block">Department FAQ</a>
+                </nav>
+              </CardContent>
+            </Card>
+          </div>
+
           {/* Main Content Section */}
-          <div className="col-span-1 md:col-span-2 space-y-8">
+          <div className="col-span-1">
             <section className="space-y-6">
               <h1 className="text-4xl font-bold text-center text-tech-dark mb-8">
                 Department Information
@@ -23,7 +39,7 @@ const About = () => {
               </p>
             </section>
 
-            <section className="space-y-4">
+            <section className="space-y-4 mt-8">
               <h2 className="text-2xl font-semibold text-tech-dark">Leadership and Contacts</h2>
               <Card>
                 <CardContent className="grid md:grid-cols-2 gap-4 p-6">
@@ -57,80 +73,55 @@ const About = () => {
             </section>
           </div>
 
-          {/* Side Panel */}
+          {/* Contact Information - Right Side */}
           <div className="col-span-1">
             <Card>
-              <CardContent className="p-6">
-                <h2 className="text-xl font-semibold mb-4">Additional Resources</h2>
-                <nav className="space-y-3">
-                  <a href="#history" className="text-tech-purple hover:underline block">History</a>
-                  <a href="#life" className="text-tech-purple hover:underline block">Life About Town</a>
-                  <a href="#directions" className="text-tech-purple hover:underline block">Directions</a>
-                  <a href="#facilities" className="text-tech-purple hover:underline block">Computing Facilities</a>
-                  <a href="#faq" className="text-tech-purple hover:underline block">Department FAQ</a>
-                </nav>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
+              <CardContent className="p-6 space-y-6">
+                <h2 className="text-xl font-semibold">Contact Us</h2>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-5 h-5 mt-1 text-tech-purple" />
+                    <div>
+                      <h3 className="font-semibold mb-2">Address</h3>
+                      <p className="text-tech-gray">
+                        BCA Department,<br />
+                        College of Commerce, Arts & Science<br />
+                        Rajendra Nagar Terminal,<br />
+                        Patna-20
+                      </p>
+                    </div>
+                  </div>
 
-        {/* Contact Information Section */}
-        <section className="mt-12">
-          <Card>
-            <CardContent className="grid md:grid-cols-2 gap-8 p-6">
-              <div className="space-y-6">
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 mt-1 text-tech-purple" />
-                  <div>
-                    <h3 className="font-semibold mb-2">Location</h3>
-                    <p className="text-tech-gray">
-                      Department of Computer Applications<br />
-                      University Campus, Block A<br />
-                      123 University Street<br />
-                      City, State 12345
-                    </p>
+                  <div className="flex items-start gap-3">
+                    <Phone className="w-5 h-5 mt-1 text-tech-purple" />
+                    <div>
+                      <h3 className="font-semibold mb-2">Phone</h3>
+                      <p className="text-tech-gray">+91-1234567890</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Clock className="w-5 h-5 mt-1 text-tech-purple" />
-                  <div>
-                    <h3 className="font-semibold mb-2">Business Hours</h3>
-                    <p className="text-tech-gray">
-                      Monday - Friday: 9:00 AM - 5:00 PM<br />
-                      Saturday & Sunday: Closed
-                    </p>
+
+                  <div className="flex items-start gap-3">
+                    <Clock className="w-5 h-5 mt-1 text-tech-purple" />
+                    <div>
+                      <h3 className="font-semibold mb-2">Office Hours</h3>
+                      <p className="text-tech-gray">9:00 AM to 5:00 PM</p>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div className="space-y-6">
-                <div className="flex items-start gap-3">
-                  <Phone className="w-5 h-5 mt-1 text-tech-purple" />
-                  <div>
-                    <h3 className="font-semibold mb-2">Phone & Fax</h3>
-                    <p className="text-tech-gray">
-                      Phone: (555) 123-4567<br />
-                      Fax: (555) 123-4568
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Mail className="w-5 h-5 mt-1 text-tech-purple" />
-                  <div>
-                    <h3 className="font-semibold mb-2">Email Contacts</h3>
-                    <div className="space-y-2">
-                      <a href="mailto:registrar@university.edu" className="text-tech-purple hover:underline block">
-                        Registrar: registrar@university.edu
-                      </a>
-                      <a href="mailto:admissions@university.edu" className="text-tech-purple hover:underline block">
-                        Admissions: admissions@university.edu
+
+                  <div className="flex items-start gap-3">
+                    <Mail className="w-5 h-5 mt-1 text-tech-purple" />
+                    <div>
+                      <h3 className="font-semibold mb-2">Email</h3>
+                      <a href="mailto:bca.department@college.edu" className="text-tech-purple hover:underline">
+                        bca.department@college.edu
                       </a>
                     </div>
                   </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       </main>
     </div>
   );
