@@ -1,6 +1,3 @@
-import { Calendar, Award, Users, Rocket, BookOpen, Globe, Code, Shield, Cpu } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselContent,
@@ -8,49 +5,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Link } from "react-router-dom";
-
-const flagshipEvents = [
-  {
-    title: "TechNova",
-    description: "Annual tech fest showcasing innovation, coding challenges, and hackathons",
-    icon: <Rocket className="h-6 w-6 text-tech-purple" />,
-    date: "October 2024",
-  },
-  {
-    title: "CodeSprint",
-    description: "24-hour coding marathon solving real-world problems",
-    icon: <Code className="h-6 w-6 text-tech-purple" />,
-    date: "July 2024",
-  },
-  {
-    title: "Innovators' Summit",
-    description: "Platform for innovative projects and research presentations",
-    icon: <Globe className="h-6 w-6 text-tech-purple" />,
-    date: "December 2024",
-  },
-];
-
-const workshops = [
-  {
-    title: "Machine Learning Workshop",
-    description: "Hands-on sessions with industry professionals",
-    icon: <BookOpen className="h-6 w-6 text-tech-purple" />,
-    date: "June 2024",
-  },
-  {
-    title: "Cybersecurity Week",
-    description: "Seminars and simulations on cyber threats",
-    icon: <Shield className="h-6 w-6 text-tech-purple" />,
-    date: "August 2024",
-  },
-  {
-    title: "Web Development Bootcamp",
-    description: "Cutting-edge tools and techniques in development",
-    icon: <Code className="h-6 w-6 text-tech-purple" />,
-    date: "September 2024",
-  },
-];
+import { FlagshipEvent } from "./events/FlagshipEvent";
+import { WorkshopCard } from "./events/WorkshopCard";
+import { ClubActivity } from "./events/ClubActivity";
+import { flagshipEvents, workshops, clubActivities } from "./events/EventsData";
 
 export const Events = () => {
   return (
@@ -72,26 +30,7 @@ export const Events = () => {
             <CarouselContent>
               {flagshipEvents.map((event, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <Card className="h-full">
-                    <CardHeader>
-                      <div className="flex items-center gap-2 mb-2">
-                        {event.icon}
-                        <CardTitle className="text-xl">{event.title}</CardTitle>
-                      </div>
-                      <CardDescription>{event.date}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-tech-gray">{event.description}</p>
-                      <Link 
-                        to={`/events/${event.title.toLowerCase().replace(/ /g, '_').replace(/'/g, '')}`}
-                        className="mt-4 w-full inline-block"
-                      >
-                        <Button className="w-full" variant="outline">
-                          Learn More
-                        </Button>
-                      </Link>
-                    </CardContent>
-                  </Card>
+                  <FlagshipEvent {...event} />
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -105,26 +44,11 @@ export const Events = () => {
           <h3 className="text-2xl font-semibold text-tech-dark mb-6">Workshops & Seminars</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {workshops.map((workshop, index) => (
-              <Card key={index} className="animate-fade-up" style={{ animationDelay: `${index * 100}ms` }}>
-                <CardHeader>
-                  <div className="flex items-center gap-2">
-                    {workshop.icon}
-                    <CardTitle className="text-xl">{workshop.title}</CardTitle>
-                  </div>
-                  <CardDescription>{workshop.date}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-tech-gray">{workshop.description}</p>
-                  <Link 
-                    to={`/events/${workshop.title.toLowerCase().replace(/ /g, '_')}`}
-                    className="mt-4 w-full inline-block"
-                  >
-                    <Button className="w-full" variant="outline">
-                      Learn More
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
+              <WorkshopCard 
+                key={index} 
+                {...workshop}
+                style={{ animationDelay: `${index * 100}ms` }} 
+              />
             ))}
           </div>
         </div>
@@ -133,21 +57,9 @@ export const Events = () => {
         <div className="text-center bg-gray-50 rounded-lg p-8">
           <h3 className="text-2xl font-semibold text-tech-dark mb-6">Regular Club Activities</h3>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="p-4">
-              <Code className="h-8 w-8 mx-auto mb-4 text-tech-purple" />
-              <h4 className="font-semibold mb-2">Coding Club</h4>
-              <p className="text-tech-gray">Weekly coding challenges and peer learning sessions</p>
-            </div>
-            <div className="p-4">
-              <Shield className="h-8 w-8 mx-auto mb-4 text-tech-purple" />
-              <h4 className="font-semibold mb-2">Cybersecurity Club</h4>
-              <p className="text-tech-gray">Ethical hacking simulations and cyber trend discussions</p>
-            </div>
-            <div className="p-4">
-              <Cpu className="h-8 w-8 mx-auto mb-4 text-tech-purple" />
-              <h4 className="font-semibold mb-2">AI & Robotics Club</h4>
-              <p className="text-tech-gray">Collaborative projects on AI and robotics</p>
-            </div>
+            {clubActivities.map((activity, index) => (
+              <ClubActivity key={index} {...activity} />
+            ))}
           </div>
         </div>
       </div>
