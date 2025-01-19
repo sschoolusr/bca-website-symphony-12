@@ -14,7 +14,6 @@ export const Events = () => {
   return (
     <section id="events" className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        {/* Introduction */}
         <div className="text-center mb-12 animate-fade-up">
           <h2 className="text-3xl font-bold text-tech-dark mb-4">Events & Activities</h2>
           <p className="text-tech-gray max-w-3xl mx-auto">
@@ -23,7 +22,6 @@ export const Events = () => {
           </p>
         </div>
 
-        {/* Flagship Events Carousel */}
         <div className="mb-16">
           <h3 className="text-2xl font-semibold text-tech-dark mb-6">Flagship Events</h3>
           <Carousel className="w-full max-w-5xl mx-auto">
@@ -39,7 +37,6 @@ export const Events = () => {
           </Carousel>
         </div>
 
-        {/* Workshops Grid */}
         <div className="mb-16">
           <h3 className="text-2xl font-semibold text-tech-dark mb-6">Workshops & Seminars</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -53,7 +50,6 @@ export const Events = () => {
           </div>
         </div>
 
-        {/* Club Activities */}
         <div className="text-center bg-gray-50 rounded-lg p-8">
           <h3 className="text-2xl font-semibold text-tech-dark mb-6">Regular Club Activities</h3>
           <div className="grid md:grid-cols-3 gap-6">
