@@ -5,7 +5,9 @@ const Events = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      <EventsComponent />
+      <div className="pt-16">
+        <EventsComponent />
+      </div>
     </div>
   );
 };
